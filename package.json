@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/AlinaAprel/news-explorer-api.git"
+    "url": "git+https://github.com/AlinaAprel/diplom-backend.git"
   },
   "keywords": [
     "diplom",
@@ -19,15 +19,15 @@
   "author": "Alina Aprel <alina.aprelh@mail.ru>",
   "license": "ISC",
   "devDependencies": {
-    "eslint": "^7.15.0",
+    "eslint": "^7.16.0",
     "eslint-config-airbnb": "^18.2.1",
     "eslint-plugin-import": "^2.22.1",
     "nodemon": "^2.0.6"
   },
   "bugs": {
-    "url": "https://github.com/AlinaAprel/news-explorer-api/issues"
+    "url": "https://github.com/AlinaAprel/diplom-backend/issues"
   },
-  "homepage": "https://github.com/AlinaAprel/news-explorer-api#readme",
+  "homepage": "https://github.com/AlinaAprel/diplom-backend#readme",
   "dependencies": {
     "babel-polyfill": "^6.26.0",
     "bcrypt": "^5.0.0",
@@ -40,13 +40,13 @@
     "eslint-plugin-react": "^7.21.5",
     "eslint-plugin-react-hooks": "^4.2.0",
     "express": "^4.17.1",
-    "express-validator": "^6.8.0",
+    "express-validator": "^6.8.1",
     "express-winston": "^4.0.5",
     "install": "^0.13.0",
     "joi": "^17.3.0",
     "jsonwebtoken": "^8.5.1",
     "mongodb": "^3.6.3",
-    "mongoose": "^5.11.7",
+    "mongoose": "^5.11.8",
     "normalize-port": "^1.0.0",
     "validator": "^13.5.2",
     "winston": "^3.3.3"
