@@ -16,7 +16,7 @@ const NotFound = require('./errors/not-found-err');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-mongoose.connect('mongodb://localhost:27017/newsdb', {
+mongoose.connect('mongodb://localhost:27017/newsdiplom', {
   useNewUrlParser: true,
   useCreateIndex: true,
   useFindAndModify: false,
