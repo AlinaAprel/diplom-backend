@@ -51,7 +51,7 @@ module.exports.deleteArticle = (req, res, next) => {
     })
     .catch((err) => {
       if (err.message === 'NotFound') {
-        throw new NotFoundError('Такой карточки нет');
+        throw new NotFoundError('Карточка не найдена');
       }
       if (err.name === 'CastError') {
         throw new BadRequestError('Переданы неверные данные');
