@@ -47,7 +47,7 @@ module.exports.deleteArticle = (req, res, next) => {
       if (articleOwner !== article.owner.toString()) {
         throw new ForbiddenError('Вы не можете удалять чужие карточки!');
       }
-      Article.remove(articleId)
+      Article.deleteOne(articleId)
         .then(() => res.send({ message: 'Карточка удалена!' }));
     })
     .catch((err) => {
