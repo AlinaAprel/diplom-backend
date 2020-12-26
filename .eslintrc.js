@@ -1,6 +1,5 @@
 module.exports = {
   env: {
-    browser: true,
     es2021: true,
     es6: true,
     node: true,
@@ -11,8 +10,6 @@ module.exports = {
     sourceType: 'module',
   },
   rules: {
-    'no-underscore-dangle': ['off', { allow: ['_id'] }],
-    'no-console': 'off',
-    'no-unused-vars': 'off',
+    'no-underscore-dangle': ['warn', { allow: ['_id'] }],
   },
 };

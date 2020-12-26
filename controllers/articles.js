@@ -3,6 +3,7 @@ const Article = require('../models/article');
 const BadRequestError = require('../errors/bad-request-err');
 const NotFoundError = require('../errors/not-found-err');
 const UnauthorizedError = require('../errors/unauthorized-err');
+const ForbiddenError = require('../errors/forbidden-err');
 
 module.exports.getArticles = (req, res, next) => {
   Article.find({ owner: req.user._id })
@@ -41,17 +42,17 @@ module.exports.deleteArticle = (req, res, next) => {
   const articleOwner = req.user._id;
   const articleId = req.params._id;
   Article.findById(req.params.articleId).select('+owner')
-    .orFail(new Error('NotFound', 'CastError'))
+    .orFail(new NotFoundError('Карточка не найдена'))
     .then((article) => {
       if (articleOwner !== article.owner.toString()) {
-        throw new UnauthorizedError('Вы не можете удалять чужие карточки!');
+        throw new ForbiddenError('Вы не можете удалять чужие карточки!');
       }
       Article.remove(articleId)
         .then(() => res.send({ message: 'Карточка удалена!' }));
     })
     .catch((err) => {
-      if (err.message === 'NotFound') {
-        throw new NotFoundError('Такой карточки нет');
+      if (err.name === 'NotFoundError') {
+        throw new NotFoundError('Карточка не найдена');
       }
       if (err.name === 'CastError') {
         throw new BadRequestError('Переданы неверные данные');
