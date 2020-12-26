@@ -35,10 +35,6 @@ module.exports.createUser = (req, res, next) => {
   if (password === undefined) {
     throw new BadRequestError('Введите пароль!');
   }
-  const userpassword = password.replace(/\s/g, '');
-  if (userpassword.length < 6) {
-    throw new BadRequestError('Пароль меньше 6 символов');
-  }
 
   bcrypt.hash(password, 10)
     .then((hash) => User.create({
@@ -55,7 +51,6 @@ module.exports.createUser = (req, res, next) => {
       if (err.name === 'ValidationError') {
         throw new BadRequestError('Переданы некорректные данные');
       }
-      next(err);
       if (err.name === 'MongoError' && err.code === 11000) {
         throw new ConflictError('Пользователь уже зарегистрирован');
       }
