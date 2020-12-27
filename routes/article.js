@@ -15,6 +15,7 @@ routerArticles.post('/', celebrate({
     image: Joi.string().required().pattern(/(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,})/),
   }),
 }), createArticle);
+
 routerArticles.delete('/:articleId', celebrate({
   body: Joi.object().keys({
     id: Joi.string().hex().max(24),
