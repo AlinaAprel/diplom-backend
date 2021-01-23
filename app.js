@@ -10,7 +10,9 @@ const bodyParser = require('body-parser');
 const { createUser, login } = require('./controllers/users');
 const auth = require('./middlewares/auth');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
+const cors = require('cors')
 
+app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
