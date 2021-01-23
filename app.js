@@ -1,3 +1,8 @@
+require('dotenv').config();
+
+const express = require('express');
+const { celebrate, Joi, errors } = require('celebrate');
+
 const whitelist = [
   'http://localhost:8080',
 ];
@@ -21,10 +26,6 @@ const corsOptions = {
   ],
   credentials: true,
 };
-require('dotenv').config();
-
-const express = require('express');
-const { celebrate, Joi, errors } = require('celebrate');
 
 const PORT = 3000;
 const app = express();
