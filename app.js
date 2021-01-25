@@ -21,7 +21,7 @@ const corsOptions = {
   credentials: true,
 };
 
-const PORT = 8080;
+const PORT = 3000;
 const app = express();
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
