@@ -3,26 +3,20 @@ require('dotenv').config();
 const express = require('express');
 const { celebrate, Joi, errors } = require('celebrate');
 
-const whitelist = [
-  'http://localhost:8080',
-];
 const corsOptions = {
-  origin: (origin, callback) => {
-    if (whitelist.indexOf(origin) !== -1 || !origin) {
-      callback(null, true);
-    } else {
-      callback(new Error('Not allowed by CORS'));
-    }
-  },
+  origin: [
+    'http://localhost:8080',
+    'https://alinaaprel.github.io/diplom-frontend/',
+  ],
   methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
   preflightContinue: false,
   optionsSuccessStatus: 204,
   allowedHeaders: [
     'Content-Type',
     'origin',
+    'Authorization',
     'x-access-token',
-    'authorization',
-    'credentials',
+    'accept',
   ],
   credentials: true,
 };
@@ -36,7 +30,7 @@ const { createUser, login } = require('./controllers/users');
 const auth = require('./middlewares/auth');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 
-app.use('*', cors(corsOptions));
+app.use(cors(corsOptions));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
@@ -91,4 +85,8 @@ app.listen(PORT);
 
 app.use('/', (req, res) => {
   res.status(404).send({ message: 'Запрашиваемый ресурс не найден' });
+});
+
+app.use((req, res) => {
+  res.header('Access-Control-Allow-Origin', '*');
 });
