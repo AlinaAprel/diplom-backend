@@ -72,6 +72,10 @@ app.use('/users/me', require('./routes/user'));
 app.use(errorLogger);
 app.use(errors());
 
+app.use((req, res) => {
+  res.header('Access-Control-Allow-Origin', '*');
+});
+
 app.use((err, req, res, next) => {
   if (err.statusCode === undefined) {
     next(err);
@@ -85,8 +89,4 @@ app.listen(PORT);
 
 app.use('/', (req, res) => {
   res.status(404).send({ message: 'Запрашиваемый ресурс не найден' });
-});
-
-app.use((req, res) => {
-  res.header('Access-Control-Allow-Origin', '*');
 });
