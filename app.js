@@ -5,7 +5,7 @@ const { celebrate, Joi, errors } = require('celebrate');
 
 const corsOptions = {
   origin: [
-    'http://localhost:8080',
+    'http://localhost:8080/',
     'https://alinaaprel.github.io/diplom-frontend/',
   ],
   methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
