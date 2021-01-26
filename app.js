@@ -5,7 +5,6 @@ const { celebrate, Joi, errors } = require('celebrate');
 
 const whitelist = [
   'http://localhost:8080',
-  'https://www.yandex.diplom.students.nomoreparties.space',
   'https://yandex.diplom.students.nomoreparties.space',
 ];
 const corsOptions = {
