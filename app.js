@@ -34,6 +34,10 @@ app.use(cors(corsOptions));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+app.use((req, res) => {
+  res.header('Access-Control-Allow-Origin', '*');
+});
+
 mongoose.connect('mongodb://localhost:27017/newsdiplom', {
   useNewUrlParser: true,
   useCreateIndex: true,
@@ -71,10 +75,6 @@ app.use('/users/me', require('./routes/user'));
 
 app.use(errorLogger);
 app.use(errors());
-
-app.use((req, res) => {
-  res.header('Access-Control-Allow-Origin', '*');
-});
 
 app.use((err, req, res, next) => {
   if (err.statusCode === undefined) {
