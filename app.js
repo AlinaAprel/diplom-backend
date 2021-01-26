@@ -17,8 +17,10 @@ const corsOptions = {
     'Authorization',
     'x-access-token',
     'accept',
+    'Access-Control-Allow-Origin',
   ],
   credentials: true,
+  'Access-Control-Allow-Origin': '*',
 };
 
 const PORT = 3000;
@@ -33,10 +35,6 @@ const { requestLogger, errorLogger } = require('./middlewares/logger');
 app.use(cors(corsOptions));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-
-app.use((req, res) => {
-  res.header('Access-Control-Allow-Origin', '*');
-});
 
 mongoose.connect('mongodb://localhost:27017/newsdiplom', {
   useNewUrlParser: true,
