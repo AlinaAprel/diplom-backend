@@ -17,10 +17,11 @@ const corsOptions = {
     'Authorization',
     'x-access-token',
     'accept',
-    'Access-Control-Allow-Origin',
   ],
+  headers: {
+    'Access-Control-Allow-Origin': '*',
+  },
   credentials: true,
-  'Access-Control-Allow-Origin': '*',
 };
 
 const PORT = 3000;
