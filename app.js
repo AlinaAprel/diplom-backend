@@ -3,24 +3,24 @@ require('dotenv').config();
 const express = require('express');
 const { celebrate, Joi, errors } = require('celebrate');
 
+const whitelist = [
+  'http://localhost:8080',
+  'https://www.yandex.diplom.students.nomoreparties.space',
+  'http://www.yandex.diplom.students.nomoreparties.space',
+  'https://yandex.diplom.students.nomoreparties.space',
+  'http://yandex.diplom.students.nomoreparties.space',
+];
 const corsOptions = {
-  origin: [
-    'http://localhost:8080/',
-  ],
-  methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
-  preflightContinue: false,
-  optionsSuccessStatus: 204,
-  allowedHeaders: [
-    'Content-Type',
-    'origin',
-    'Authorization',
-    'x-access-token',
-    'accept',
-  ],
-  headers: {
-    'Access-Control-Allow-Origin': '*',
+  origin: function (origin, callback) {
+    if (whitelist.indexOf(origin) !== -1 || !origin) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
   },
   credentials: true,
+  allowedHeaders: 'Content-Type',
+  optionsSuccessStatus: 200,
 };
 
 const PORT = 3000;
