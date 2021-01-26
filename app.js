@@ -6,9 +6,6 @@ const { celebrate, Joi, errors } = require('celebrate');
 const corsOptions = {
   origin: [
     'http://localhost:8080/',
-    'https://alinaaprel.github.io/diplom-frontend/',
-    'https://www.yandex.diplom.students.nomoreparties.space/',
-    'https://yandex.diplom.students.nomoreparties.space/',
   ],
   methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
   preflightContinue: false,
