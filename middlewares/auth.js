@@ -5,12 +5,14 @@ const { NODE_ENV, JWT_SECRET } = process.env;
 
 module.exports = (req, res, next) => {
   const { authorization } = req.headers;
+  console.log(authorization, 'req.headers')
 
   if (!authorization || !authorization.startsWith('Bearer ')) {
     throw new UnauthorizedError('Необходима авторизация');
   }
 
   const token = authorization.replace('Bearer ', '');
+  console.log(token, 'token чистый')
   let payload;
 
   try {
@@ -19,7 +21,7 @@ module.exports = (req, res, next) => {
     throw new UnauthorizedError('Необходима авторизация');
   }
 
-  console.log(payload)
+  console.log(payload, 'payload')
   req.user = payload;
 
   next();
