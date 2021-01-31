@@ -16,7 +16,7 @@ const corsOptions = {
     }
   },
   credentials: true,
-  allowedHeaders: 'Content-Type',
+  allowedHeaders: ['Content-Type', 'Authorization'],
   optionsSuccessStatus: 200,
 };
 
